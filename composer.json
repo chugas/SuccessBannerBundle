@@ -1,0 +1,22 @@
+{
+  "name": "success/banner-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony2 bundle for banners management",
+  "keywords": ["Success", "Symfony Bundle", "Banners", "Advertising"],
+  "homepage": "https://github.com/chugas",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gaston Caldeiro",
+      "email": "successlabsuy@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.2",
+    "symfony/framework-bundle": ">=2.1,<2.3-dev"
+  },
+  "autoload": {
+    "psr-0": { "Success\\BannerBundle": "" }
+  },
+  "target-dir": "Success/BannerBundle"
+}
