@@ -1,0 +1,3 @@
+success_banner_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SuccessBannerBundle:Default:index }

@@ -1,0 +1,13 @@
+parameters:
+    success_banner.admin.banner.entity: Success\BannerBundle\Entity\Banner
+    success_banner.admin.banner.admin: Success\BannerBundle\Admin\BannerAdmin
+
+services:
+    sonata.success.banners:
+        class: %success_banner.admin.banner.admin%
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: 'Advertising', label: Banners }
+        arguments:
+            - null
+            - %success_banner.admin.banner.entity%
+            - SuccessBannerBundle:Admin

@@ -1,0 +1,5 @@
+{% if stats is not empty %}
+Views: {{ stats.views }}
+Clicks: {{ stats.clicks }}
+{% if stats.clicks > 0 %}CTR: {{ stats.clicks/stats.views|number_format(2) }}{% endif %}
+{% endif %}
