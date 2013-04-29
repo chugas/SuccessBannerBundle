@@ -23,28 +23,34 @@ class BannerAdmin extends Admin
             ->add('image')
             ->add('start_date')
             ->add('end_date')
-            ->add('html')
+            //->add('html')
         ;
     }
 
     public function configureFormFields(FormMapper $formMapper)
     {
+        $options = array('required' => false);
+        $options['data_class'] = null;
+        if (($subject = $this->getSubject()) && $subject->getImage()) {
+          $path = $subject->getWebPath();
+          $options['help'] = '<img src="' . $path . '" width="350" />';      
+        }
+        
         $formMapper
             ->add('place', 'sonata_type_translatable_choice', array(
                 'choice_list' => new SimpleChoiceList(Banner::getPlacesList()),
             ))
             ->add('link')
-            ->add('file', 'file', array('required' => false))
+            ->add('file', 'file', $options)
             ->add('start_date')
             ->add('end_date')
-            ->add('html')
+            //->add('html')
         ;
     }
 
     public function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id')
             ->addIdentifier('place')
             ->add('link')
             ->add('start_date')
@@ -63,7 +69,7 @@ class BannerAdmin extends Admin
             ->add('link')
             ->add('start_date')
             ->add('end_date')
-            ->add('html')
+            //->add('html')
         ;
     }
 

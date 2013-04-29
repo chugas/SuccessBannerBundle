@@ -47,6 +47,27 @@ class Banner
      * @Assert\Url()
      */
     private $link;
+    
+    /**
+     * @var string $active
+     *
+     * @ORM\Column(name="active", type="boolean", nullable=true)
+     */
+    private $active;
+    
+    /**
+     * @var string $in_new_window
+     *
+     * @ORM\Column(name="in_new_window", type="boolean", nullable=true)
+     */
+    private $in_new_window;
+    
+    /**
+     * @var string $position
+     *
+     * @ORM\Column(name="position", type="integer", nullable=true)
+     */
+    private $position;    
 
     /**
      * @Assert\Image(maxSize="6000000")
@@ -92,18 +113,18 @@ class Banner
 
     public function getWebPath()
     {
-        return null === $this->image ? null : $this->getUploadDir() . '/' . $this->image;
+        return null === $this->image ? null : '/' . $this->getUploadDir() . '/' . $this->image;
     }
 
-    protected function getUploadRootDir()
+    public function getUploadRootDir()
     {
-        return $_SERVER['DOCUMENT_ROOT'] . '/' . $this->getUploadDir();
+        return __DIR__ . '/../../../../../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
         // get rid of the __DIR__ so it doesn't screw when displaying uploaded doc/image in the view.
-        return 'uploads/images/banners';
+        return 'uploads/banners';
     }
 
     /**
@@ -152,7 +173,8 @@ class Banner
     public static function getPlacesList()
     {
         return array(
-            'Main_horizontal' => 'Main_horizontal'
+            'simple' => 'Slider',
+            'carousel' => 'Carrousel'            
         );
     }
 
@@ -316,4 +338,73 @@ class Banner
         return $this->html;
     }
 
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Banner
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+    
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set in_new_window
+     *
+     * @param boolean $inNewWindow
+     * @return Banner
+     */
+    public function setInNewWindow($inNewWindow)
+    {
+        $this->in_new_window = $inNewWindow;
+    
+        return $this;
+    }
+
+    /**
+     * Get in_new_window
+     *
+     * @return boolean 
+     */
+    public function getInNewWindow()
+    {
+        return $this->in_new_window;
+    }
+
+    /**
+     * Set position
+     *
+     * @param integer $position
+     * @return Banner
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
 }

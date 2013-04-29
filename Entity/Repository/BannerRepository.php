@@ -6,7 +6,26 @@ use Doctrine\ORM\EntityRepository;
 
 class BannerRepository extends EntityRepository
 {
+    public function findByPlace($place)
+    {
+        $em = $this->getEntityManager();
 
+        $now = new \DateTime();
+
+        $qb = $em->createQueryBuilder();
+        $qb
+            ->select('b')
+            ->from('SuccessBannerBundle:Banner', 'b')
+            ->where('b.place = :place')
+            ->andWhere('b.active = 1')
+            ->andWhere('b.start_date <= :now OR b.start_date IS NULL')
+            ->andWhere('b.end_date >= :now OR b.end_date IS NULL')
+            ->orderBy('b.position', 'DESC')
+            ->setParameter('now', $now)
+            ->setParameter('place', $place);
+        return $qb->getQuery()->execute();
+    }
+    
     public function findOneRandom($place)
     {
         $em = $this->getEntityManager();
