@@ -102,8 +102,8 @@ class Banner
 
     function __construct()
     {
-        $this->start_date = new \DateTime();
-        $this->end_date = new \DateTime('tomorrow 23:59:00');
+        $this->start_date = NULL;//new \DateTime();
+        $this->end_date = NULL;//new \DateTime('tomorrow 23:59:00');
     }
 
     public function getAbsolutePath()
@@ -118,7 +118,7 @@ class Banner
 
     public function getUploadRootDir()
     {
-        return __DIR__ . '/../../../../../web/' . $this->getUploadDir();
+        return __DIR__ . '/../../../../../../web/' . $this->getUploadDir();
     }
 
     protected function getUploadDir()

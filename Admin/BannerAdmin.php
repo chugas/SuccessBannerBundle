@@ -20,9 +20,11 @@ class BannerAdmin extends Admin
             ->add('id')
             ->add('place')
             ->add('link')
+            ->add('active')
+            ->add('in_new_window')
             ->add('image')
-            ->add('start_date')
-            ->add('end_date')
+            //->add('start_date')
+            //->add('end_date')
             //->add('html')
         ;
     }
@@ -41,10 +43,12 @@ class BannerAdmin extends Admin
                 'choice_list' => new SimpleChoiceList(Banner::getPlacesList()),
             ))
             ->add('link')
+            ->add('active')
+            ->add('in_new_window')                
             ->add('file', 'file', $options)
-            ->add('start_date')
-            ->add('end_date')
-            //->add('html')
+            //->add('start_date')
+            //->add('end_date')
+            ->add('html')
         ;
     }
 
@@ -53,8 +57,10 @@ class BannerAdmin extends Admin
         $listMapper
             ->addIdentifier('place')
             ->add('link')
-            ->add('start_date')
-            ->add('end_date')
+            ->add('active', null, array('editable' => true))
+            ->add('in_new_window', null, array('editable' => true))                
+            //->add('start_date')
+            //->add('end_date')
             ->add('stats', null, array('template' => 'SuccessBannerBundle:Banner:stats_partial.html.twig'))
         ;
     }
@@ -67,8 +73,10 @@ class BannerAdmin extends Admin
                     )
             )
             ->add('link')
-            ->add('start_date')
-            ->add('end_date')
+            ->add('active')
+            ->add('in_new_window')                
+            //->add('start_date')
+            //->add('end_date')
             //->add('html')
         ;
     }
