@@ -11,7 +11,7 @@ class BannerController extends Controller
 {
     public function viewsAction($place, $filter = null)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $banners = $em->getRepository('SuccessBannerBundle:Banner')->findByPlace($place);
 
         /*foreach($banners as $banner){
@@ -37,7 +37,7 @@ class BannerController extends Controller
     
     public function viewAction($place, $filter = null)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $banner = $em->getRepository('SuccessBannerBundle:Banner')->findOneRandom($place);
 
         $banner_log = $em->getRepository('SuccessBannerBundle:BannerLog')->findOneByBanner($banner->getId());
@@ -60,7 +60,7 @@ class BannerController extends Controller
 
     public function clickAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $banner = $em->getRepository('SuccessBannerBundle:Banner')->find($id);
         $banner_log = $em->getRepository('SuccessBannerBundle:BannerLog')->findOneByBanner($id);
         if(!$banner_log){
@@ -76,7 +76,7 @@ class BannerController extends Controller
     public function statsAction($id)
     {
       
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $query = $em
                 ->createQuery('SELECT l.views, l.clicks FROM SuccessBannerBundle:BannerLog l WHERE l.banner=:banner GROUP BY l.banner')
                 ->setParameter('banner', $id);
