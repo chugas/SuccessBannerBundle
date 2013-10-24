@@ -173,8 +173,8 @@ class Banner
     public static function getPlacesList()
     {
         return array(
-            'simple' => 'Slider',
-            'carousel' => 'Carrousel'            
+            'simple' => 'Simple',
+            'carousel' => 'Carrousel'
         );
     }
 

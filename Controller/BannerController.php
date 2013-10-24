@@ -14,7 +14,7 @@ class BannerController extends Controller
         $em = $this->getDoctrine()->getManager();
         $banners = $em->getRepository('SuccessBannerBundle:Banner')->findByPlace($place);
 
-        /*foreach($banners as $banner){
+        foreach($banners as $banner){
           $banner_log = $em->getRepository('SuccessBannerBundle:BannerLog')->findOneByBanner($banner->getId());
           if(!$banner_log){
             $banner_log = new BannerLog($banner);
@@ -23,9 +23,8 @@ class BannerController extends Controller
           $banner_log->setViews($banner_log->getViews()+1);
 
           $em->persist($banner_log);
-          
         }
-        $em->flush();*/
+        $em->flush();
 
         $parameters = array(
             'banners' => $banners,

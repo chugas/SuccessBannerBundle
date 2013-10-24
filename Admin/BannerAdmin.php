@@ -35,7 +35,7 @@ class BannerAdmin extends Admin
         $options['data_class'] = null;
         if (($subject = $this->getSubject()) && $subject->getImage()) {
           $path = $subject->getWebPath();
-          $options['help'] = '<img src="' . $path . '" width="350" />';      
+          $options['help'] = '<img src="' . $path . '" width="290" />';      
         }
         
         $formMapper

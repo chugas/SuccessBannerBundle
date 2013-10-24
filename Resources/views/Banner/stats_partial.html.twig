@@ -1,1 +1,1 @@
-<td>{% render 'SuccessBannerBundle:Banner:stats' with {'id': object.id} %}</td>
+<td>{{ render(controller('SuccessBannerBundle:Banner:stats', {'id': object.id})) }}</td>
