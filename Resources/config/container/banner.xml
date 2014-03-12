@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+                               http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <!--<parameter key="success.handler.banner.class">Sylius\Bundle\SalesBundle\Generator\OrderNumberGenerator</parameter>
+        <parameter key="success.listener.banner.class">Sylius\Bundle\SalesBundle\EventListener\OrderNumberListener</parameter>-->
+        <parameter key="success_banner.admin.banner.admin">Success\BannerBundle\Admin\BannerAdmin</parameter>
+    </parameters>
+
+    <services>
+        <!-- CONTROLADOR -->
+        <service id="success.controller.banner" class="%success.controller.banner.class%">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+
+        <!-- FORMULARIO -->
+        <!--<service id="success.form.type.banner" class="%success.form.type.banner.class%">
+            <argument>%success.model.banner.class%</argument>
+            <argument>%success.validation_group.banner%</argument>
+            <tag name="form.type" alias="success_banner" />
+        </service>-->
+
+        <!-- MANAGER -->
+        <!--<service id="success.handler.banner" class="%success.handler.banner.class%">
+            <argument type="service" id="success.repository.banner" />
+        </service>-->
+
+        <!-- LISTENER -->
+        <!--<service id="success.listener.banner" class="%success.listener.banner.class%">
+            <argument type="service" id="success.handler.banner" />
+            <tag name="kernel.event_listener" event="success.banner.pre_create" method="generateBannerNumber" priority="10" />
+        </service>-->
+        
+        <!-- SONATA -->
+        <service id="sonata.success.banners" class="Success\BannerBundle\Admin\BannerAdmin">
+            <tag name="sonata.admin" manager_type="orm" group="Portal" label="Banners" />          
+            <argument />
+            <argument>%success.model.banner.class%</argument>
+            <argument>SuccessBannerBundle:Admin</argument>
+        </service>
+
+    </services>
+</container>

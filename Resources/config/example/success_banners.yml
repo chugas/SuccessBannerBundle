@@ -1,0 +1,14 @@
+success_banner:
+    driver: doctrine/orm  
+    classes:
+        banner:
+            model: Success\BannerBundle\Entity\Banner
+            controller: Success\BannerBundle\Controller\BannerController
+            repository: Success\BannerBundle\Doctrine\ORM\BannerRepository
+            #form: Sylius\Bundle\CoreBundle\Form\Type\ProductType
+        banner_log:
+            model: Success\BannerBundle\Entity\BannerLog
+            controller: Success\BannerBundle\Controller\BannerController
+            repository: Success\BannerBundle\Doctrine\ORM\BannerLogRepository
+            #form: Sylius\Bundle\CoreBundle\Form\Type\ProductType          
+          
